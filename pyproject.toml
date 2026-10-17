@@ -39,8 +39,12 @@ dependencies = [
   "pipecat-ai>=0.0.90",
   "numpy>=1.24.0",
   "loguru>=0.6.0",
-  # fireredvad is not on PyPI — install manually from GitHub.
-  # See README for setup instructions.
+  # fireredvad reached PyPI as 0.0.2, so the manual GitHub checkout is no
+  # longer needed. The [cpu] extra is not optional in practice: fireredvad
+  # declares torch only under its gpu/cpu extras, but fireredvad/aed.py
+  # imports torch unconditionally, so a bare `fireredvad` cannot be imported
+  # at all. Swap to fireredvad[gpu] if you want the CUDA build.
+  "fireredvad[cpu]>=0.0.2",
 ]
 
 [project.optional-dependencies]
@@ -51,10 +55,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage       = "https://github.com/your-username/pipecat-firered-vad"
-Repository     = "https://github.com/your-username/pipecat-firered-vad"
-"Bug Tracker"  = "https://github.com/your-username/pipecat-firered-vad/issues"
-Changelog      = "https://github.com/your-username/pipecat-firered-vad/releases"
+Homepage       = "https://github.com/rahulsolanki001/pipecat-fire-vad"
+Repository     = "https://github.com/rahulsolanki001/pipecat-fire-vad"
+"Bug Tracker"  = "https://github.com/rahulsolanki001/pipecat-fire-vad/issues"
+Changelog      = "https://github.com/rahulsolanki001/pipecat-fire-vad/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pipecat_firered_vad"]
